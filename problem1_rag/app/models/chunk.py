@@ -1,13 +1,13 @@
-from dataclasses import dataclass
-from typing import Dict
+from dataclasses import dataclass, field
+from typing import Any
+from pathlib import Path
 
-@dataclass
+
+@dataclass(slots=True)
 class DocumentChunk:
-
-    # Represents a chunk generated from a source document.
     chunk_id: str
-    document_id: str
-    source: str
+    source: Path
+    file_type: str
     text: str
     chunk_index: int
-    metadata: Dict
+    metadata: dict[str, Any] = field(default_factory=dict)

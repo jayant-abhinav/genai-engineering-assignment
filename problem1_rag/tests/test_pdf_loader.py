@@ -1,19 +1,10 @@
-from pathlib import Path
-from problem1_rag.app.ingestion.pdf_loader import load
 from problem1_rag.app.core.config import RAW_DATA_DIR
+from problem1_rag.app.ingestion.pdf_loader import load
 
-def main():
-    pdf_path = RAW_DATA_DIR / "sample.pdf"
 
-    document = load(pdf_path)
+def test_pdf_loader():
+    document = load(RAW_DATA_DIR / "sample.pdf")
 
-    print(document.source)
-    print(document.file_type)
-    print(document.metadata)
-
-    print(document.text[:1000])
-
-    print(len(document.text))
-
-if __name__ == "__main__":
-    main()
+    assert document.file_type == ".pdf"
+    assert len(document.text) > 0
+    assert document.source.name == "sample.pdf"
