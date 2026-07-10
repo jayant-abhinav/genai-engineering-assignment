@@ -1,33 +1,21 @@
 from problem1_rag.app.embeddings.embedding_service import EmbeddingService
-from problem1_rag.app.prompt.prompt_builder import PromptBuilder
 from problem1_rag.app.retrieval.retriever import Retriever
 from problem1_rag.app.vectorstore.vector_store import ChromaStore
 
-
-def main():
+def test_retrieval():
 
     embedding_service = EmbeddingService()
-
     vector_store = ChromaStore()
-
     retriever = Retriever(vector_store)
 
     query_embedding = embedding_service.embed_text(
         "Explain Retrieval-Augmented Generation"
     )
 
-    context = retriever.retrieve(
+    results = retriever.retrieve(
         query_embedding=query_embedding,
-        k=2,
+        k=1,
     )
 
-    prompt = PromptBuilder.build(
-        question="Explain Retrieval-Augmented Generation",
-        context=context,
-    )
-
-    print(prompt)
-
-
-if __name__ == "__main__":
-    main()
+    assert len(results) == 1
+    assert "Retrieval-Augmented Generation" in results[0].text
