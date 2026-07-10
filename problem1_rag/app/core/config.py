@@ -1,4 +1,8 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Project Paths
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -29,5 +33,13 @@ LOG_FILE = LOG_DIR / "rag_pipeline.log"
 
 # ChromaDB Configuration
 CHROMA_DB_DIR = BASE_DIR / "chroma_db"
-
 CHROMA_COLLECTION_NAME = "documents"
+
+# Gemini Configuration
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = "gemini-3.5-flash"
+
+# Retry Configuration
+LLM_MAX_RETRIES = 3
+LLM_RETRY_MIN_WAIT = 1
+LLM_RETRY_MAX_WAIT = 8
