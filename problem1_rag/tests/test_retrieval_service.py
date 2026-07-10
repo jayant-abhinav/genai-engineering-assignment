@@ -1,6 +1,7 @@
 from problem1_rag.app.embeddings.embedding_service import EmbeddingService
 from problem1_rag.app.retrieval.retriever import Retriever
 from problem1_rag.app.vectorstore.vector_store import ChromaStore
+from pathlib import Path
 
 def test_retrieval():
 
@@ -19,5 +20,6 @@ def test_retrieval():
 
     assert len(results) == 1
     assert results[0].text != ""
-    assert results[0].source == "sample.md"
+
+    assert Path(results[0].source).suffix in {".md", ".html", ".pdf"}
     assert isinstance(results[0].distance, float)

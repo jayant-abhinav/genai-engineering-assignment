@@ -9,7 +9,8 @@ class PromptBuilder:
         "Answer ONLY using the provided context.\n"
         "If the answer cannot be found in the context, "
         "say that the information is not available in the knowledge base.\n"
-        "Always cite the source(s) used."
+        "Do not include source citations in the answer text.\n"
+        "Sources are returned separately by the application."
     )
 
     @classmethod

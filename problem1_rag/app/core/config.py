@@ -37,7 +37,7 @@ CHROMA_COLLECTION_NAME = "documents"
 
 # Gemini Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = "gemini-3.5-flash"
+GEMINI_MODEL = "gemini-3.1-flash-lite"
 
 # Retry Configuration
 LLM_MAX_RETRIES = 3

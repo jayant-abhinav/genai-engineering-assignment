@@ -4,6 +4,7 @@ from problem1_rag.app.models.rag_response import RAGResponse
 from problem1_rag.app.prompt.prompt_builder import PromptBuilder
 from problem1_rag.app.retrieval.retriever import Retriever
 
+
 class RAGService:
     """
     Orchestrates the complete RAG pipeline.
@@ -33,14 +34,14 @@ class RAGService:
 
         # Step 1: Embed query
         query_embedding = self.embedding_service.embed_query(query)
-
+   
         # Step 2: Retrieve relevant chunks
         retrieval_result = self.retriever.retrieve(query_embedding)
 
         # Step 3: Build prompt
         prompt = self.prompt_builder.build(
-            query=query,
-            retrieval_result=retrieval_result,
+            question=query,
+            context=retrieval_result,
         )
 
         # Step 4: Generate answer
@@ -50,3 +51,4 @@ class RAGService:
             answer=answer,
             retrieval=retrieval_result,
         )
+        
