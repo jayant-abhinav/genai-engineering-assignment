@@ -26,3 +26,8 @@ EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 # Logging
 LOG_LEVEL = "INFO"
 LOG_FILE = LOG_DIR / "rag_pipeline.log"
+
+# ChromaDB Configuration
+CHROMA_DB_DIR = BASE_DIR / "chroma_db"
+
+CHROMA_COLLECTION_NAME = "documents"
