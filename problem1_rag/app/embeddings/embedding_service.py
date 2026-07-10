@@ -18,6 +18,11 @@ class EmbeddingService:
             normalize_embeddings=True,
         )
         return embedding.tolist()
+    
+    def embed_query(self, query: str) -> List[float]:
+
+        # Generate embedding for a user query.
+        return self.embed_text(query)
 
     def embed_chunks(self, chunks: List[DocumentChunk],) -> List[List[float]]:
 

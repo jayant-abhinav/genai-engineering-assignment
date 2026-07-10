@@ -1,6 +1,7 @@
 from typing import List, Optional
 from problem1_rag.app.models.retrieval_result import RetrievalResult
 from problem1_rag.app.vectorstore.vector_store import ChromaStore
+from problem1_rag.app.core.config import TOP_K_RESULTS
 
 class Retriever:
     # Handles semantic retrieval from the vector store.
@@ -11,7 +12,7 @@ class Retriever:
     def retrieve(
         self,
         query_embedding: list[float],
-        k: int = 5,
+        k: int = TOP_K_RESULTS,
         where: Optional[dict] = None,
     ) -> List[RetrievalResult]:
 

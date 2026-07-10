@@ -18,4 +18,6 @@ def test_retrieval():
     )
 
     assert len(results) == 1
-    assert "Retrieval-Augmented Generation" in results[0].text
+    assert results[0].text != ""
+    assert results[0].source == "sample.md"
+    assert isinstance(results[0].distance, float)

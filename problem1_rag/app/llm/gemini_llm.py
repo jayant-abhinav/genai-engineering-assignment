@@ -29,7 +29,6 @@ def should_retry(exception: Exception) -> bool:
 
     return False
 
-
 class GeminiLLM(LLMService):
 
     # Google Gemini implementation.
