@@ -1,8 +1,11 @@
-# Entry point for the Problem 2 LLM Judge service.
+# Entry point for the LLM Judge service.
 from fastapi import FastAPI
 from problem2_llm_judge.core.config import get_settings
 from problem2_llm_judge.core.logging import configure_logging
 from problem2_llm_judge.api.routes import router
+from problem2_llm_judge.core.exception_handlers import (
+    register_exception_handlers,
+)
 
 settings = get_settings()
 configure_logging(settings.LOG_LEVEL)
@@ -13,6 +16,7 @@ app = FastAPI(
     description="LLM-based response evaluation service."
 )
 app.include_router(router)
+register_exception_handlers(app)
 
 @app.get("/health", tags=["Health"])
 def health() -> dict[str, str]:

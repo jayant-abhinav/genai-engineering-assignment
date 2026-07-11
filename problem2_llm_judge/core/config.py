@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     # Judge configuration
     MAX_RETRIES: int = 2
     TEMPERATURE: float = 0.0
+    REQUEST_TIMEOUT: int = 30
 
     model_config = SettingsConfigDict(
         env_file=".env",

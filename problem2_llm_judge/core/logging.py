@@ -11,4 +11,5 @@ def configure_logging(level: str = "INFO") -> None:
             "%(name)s | "
             "%(message)s"
         ),
+        datefmt="%Y-%m-%d %H:%M:%S",
     )

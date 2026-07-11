@@ -8,5 +8,9 @@ from problem2_llm_judge.services.judge_service import JudgeService
 def get_llm() -> GeminiLLM:
     return GeminiLLM(get_settings())
 
+@lru_cache
 def get_judge_service() -> JudgeService:
-    return JudgeService(get_llm())
+    return JudgeService(
+        llm=get_llm(),
+        settings=get_settings(),
+    )
