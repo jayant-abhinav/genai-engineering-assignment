@@ -1,7 +1,12 @@
-from problem2_llm_judge.core.config import Settings, get_settings
+# Dependency providers
+from functools import lru_cache
+from problem2_llm_judge.core.config import get_settings
+from problem2_llm_judge.services.gemini_llm import GeminiLLM
+from problem2_llm_judge.services.judge_service import JudgeService
 
-def get_app_settings() -> Settings:
-    # Returns application settings.
+@lru_cache
+def get_llm() -> GeminiLLM:
+    return GeminiLLM(get_settings())
 
-    # This function exists so FastAPI dependencies can inject the settings object consistently.
-    return get_settings()
+def get_judge_service() -> JudgeService:
+    return JudgeService(get_llm())
