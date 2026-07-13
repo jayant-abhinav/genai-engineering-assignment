@@ -19,13 +19,17 @@ from problem1_rag.app.core.config import (
 )
 
 def should_retry(exception: Exception) -> bool:
+    """
+    Retry only transient Gemini API errors.
+    """
 
-    # Retry only transient Gemini API errors.
     if isinstance(exception, ServerError):
         return True
 
     if isinstance(exception, ClientError):
-        return exception.status_code == 429
+        # New google-genai SDK exposes the HTTP status as `code`
+        code = getattr(exception, "code", None)
+        return code == 429
 
     return False
 

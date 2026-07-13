@@ -3,8 +3,6 @@ from problem1_rag.app.llm.llm_service import LLMService
 from problem1_rag.app.models.rag_response import RAGResponse
 from problem1_rag.app.prompt.prompt_builder import PromptBuilder
 from problem1_rag.app.retrieval.retriever import Retriever
-
-
 class RAGService:
     """
     Orchestrates the complete RAG pipeline.
@@ -31,7 +29,6 @@ class RAGService:
     def answer(self, query: str) -> RAGResponse:
 
         # Execute the complete RAG pipeline.
-
         # Step 1: Embed query
         query_embedding = self.embedding_service.embed_query(query)
    

@@ -18,6 +18,9 @@ from problem1_rag.app.core.config import (
     GEMINI_MODEL,
 )
 
+import logging
+logger = logging.getLogger(__name__)
+
 router = APIRouter()
 
 @router.get("/health")
@@ -72,8 +75,17 @@ def ask(request: AskRequest, rag_service: RAGService = Depends(get_rag_service),
             detail=str(exc),
         )
 
-    except Exception:
+    # except Exception:
+    #     raise HTTPException(
+    #         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+    #         detail="An unexpected error occurred while processing the request.",
+    #     )
+    except Exception as exc:
+        logger.exception("Unexpected error while processing /ask request.")
+
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="An unexpected error occurred while processing the request.",
+            detail=str(exc),   # TEMPORARY
         )
+
+

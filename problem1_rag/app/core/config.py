@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 
 DATA_DIR = BASE_DIR / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
-PROCESSED_DATA_DIR = DATA_DIR / "processed"
+EVAL_DATA_DIR = DATA_DIR / "evaluation_docs"
 
 LOG_DIR = BASE_DIR / "logs"
 
@@ -37,7 +37,7 @@ CHROMA_COLLECTION_NAME = "documents"
 
 # Gemini Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = "GEMINI_MODEL"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL")
 
 # Retry Configuration
 LLM_MAX_RETRIES = 3

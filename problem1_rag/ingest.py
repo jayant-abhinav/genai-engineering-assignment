@@ -49,7 +49,6 @@ def ingest():
         vector_store.reset()
         print("Knowledge base reset.")
     
-    print("Knowledge base reset.")
     print(f"Current vectors: {vector_store.count()}")
 
     documents = []
